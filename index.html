@@ -105,5 +105,48 @@
   </div>
 
   <script src="script.js"></script>
+  <script>
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    target.scrollIntoView({ behavior: 'smooth' });
+    history.replaceState(null, null, ' ');
+  });
+});
+  </script>
+  <script>
+  document.getElementById("contactForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    // Get input values
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const what = document.getElementById("what").value;
+    const notes = document.getElementById("notes").value;
+
+    // ⚙️ Replace this with YOUR WhatsApp number (with country code, no +)
+    const phoneNumber = "919874584803";
+
+    // Format the message
+    const message = `Hey! My name is ${name}.
+Email: ${email}
+Subject: ${what}
+Message: ${notes}`;
+
+    // Detect device
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+    // Choose correct WhatsApp link
+    const baseURL = isMobile
+      ? `https://wa.me/${phoneNumber}`
+      : `https://web.whatsapp.com/send?phone=${phoneNumber}`;
+
+    const fullURL = `${baseURL}&text=${encodeURIComponent(message)}`;
+
+    // Open WhatsApp
+    window.open(fullURL, "_blank");
+  });
+  </script>
 </body>
       </html>
