@@ -41,20 +41,32 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Navbar Scroll Effect
+// Navbar Scroll Effect and Parallax (combined with throttling)
 const navbar = document.querySelector('.navbar');
-let lastScroll = 0;
+const hero = document.querySelector('.hero');
+let ticking = false;
 
 window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
+    if (!ticking) {
+        window.requestAnimationFrame(() => {
+            const currentScroll = window.pageYOffset;
+            
+            // Navbar scroll effect
+            if (currentScroll > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            // Parallax effect for hero
+            if (hero) {
+                hero.style.transform = `translateY(${currentScroll * 0.5}px)`;
+            }
+            
+            ticking = false;
+        });
+        ticking = true;
     }
-    
-    lastScroll = currentScroll;
 });
 
 // CTA Button Click
@@ -74,12 +86,14 @@ const contactForm = document.getElementById('contactForm');
 contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
     
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
     
     // Show success message (in a real application, this would send data to a server)
-    alert(`Thank you, ${name}! Your message has been received. We'll get back to you at ${email} soon.`);
+    // Using textContent to avoid XSS vulnerabilities
+    const successMessage = document.createElement('div');
+    successMessage.textContent = `Thank you, ${name}! Your message has been received. We'll get back to you at ${email} soon.`;
+    alert(successMessage.textContent);
     
     // Reset form
     contactForm.reset();
@@ -116,15 +130,9 @@ document.addEventListener('DOMContentLoaded', () => {
 const updateFooterYear = () => {
     const footer = document.querySelector('.footer p');
     if (footer) {
-        footer.textContent = footer.textContent.replace('2024', new Date().getFullYear());
+        const currentYear = new Date().getFullYear();
+        footer.textContent = `© ${currentYear} Rawbit. All rights reserved. | Crafted with passion and innovation.`;
     }
 };
 
 updateFooterYear();
-
-// Add a subtle parallax effect to hero section
-window.addEventListener('scroll', () => {
-    const hero = document.querySelector('.hero');
-    const scrolled = window.pageYOffset;
-    hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-});
