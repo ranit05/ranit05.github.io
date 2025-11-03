@@ -1,16 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RAWBIT</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <canvas id="particleCanvas"></canvas>
-    <div class="container">
-      <h1 class="glitch" data-text="RAWBIT">RAWBIT</h1>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RAWBIT Studio</title>
+  <link rel="stylesheet" href="style.css" />
+  <meta name="theme-color" content="#0a0000">
+</head>
+<body>
+
+  <!-- Intro splash -->
+  <div id="intro" class="screen">
+    <div class="intro-inner">
+      <h1 id="logo" class="logo">RAWBIT</h1>
     </div>
-    <script src="script.js"></script>
-  </body>
-</html>
+  </div>
+
+  <!-- Main site -->
+  <div id="site" class="site hidden">
+    <canvas id="particles"></canvas>
+
+    <header class="topbar">
+      <div class="brand">RAWBIT</div>
+      <nav class="nav">
+        <a href="#hero">Home</a>
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button id="cta" class="btn">Get Started</button>
+    </header>
+
+    <main>
+      <section id="hero" class="hero">
+        <div class="hero-inner">
+          <h2 class="hero-title">RAWBIT STUDIO</h2>
+          <p class="hero-sub">ENTER THE CHAOS — we build portfolios, socials, ad campaigns & curated creator websites.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#contact">Book 1:1</a>
+            <a class="btn ghost" href="#portfolio">See Work</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" class="services">
+        <h3 class="section-title">Services</h3>
+        <div class="cards">
+          <div class="card">
+            <h4>Portfolio Sites</h4>
+            <p>Fast, aesthetic portfolio websites for models & creators. SEO-ready, mobile-first.</p>
+          </div>
+          <div class="card">
+            <h4>Bio & Dating Bios</h4>
+            <p>Short, magnetic bios and dating profiles that convert swipes into messages.</p>
+          </div>
+          <div class="card">
+            <h4>GMB & Ads</h4>
+            <p>GMB optimisation + initial Meta/Google ads setup (ads run after assets provided).</p>
+          </div>
+          <div class="card">
+            <h4>Creative Packs</h4>
+            <p>Short form video edits, posters, and one-on-one branding sessions.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="portfolio" class="portfolio">
+        <h3 class="section-title">Selected Work</h3>
+        <div class="grid">
+          <figure class="item">
+            <div class="thumb">Model • Portfolio</div>
+            <figcaption>Mobile-first portfolio for a runway model — fast, visual, easy-to-edit.</figcaption>
+          </figure>
+          <figure class="item">
+            <div class="thumb">Creator • Brand Kit</div>
+            <figcaption>Complete brand kit, social templates & ad-ready assets.</figcaption>
+          </figure>
+          <figure class="item">
+            <div class="thumb">GMB • Local Boost</div>
+            <figcaption>Local business listing optimisation + starter ad setup.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="contact" class="contact">
+        <h3 class="section-title">Let’s collab</h3>
+        <p class="muted">Short on budget? We do starter packages. Want custom? Let’s talk.</p>
+
+        <form id="contactForm" class="form">
+          <input name="name" type="text" placeholder="Your name" required />
+          <input name="email" type="email" placeholder="Email" required />
+          <input name="what" type="text" placeholder="What do you need? (one line)" required />
+          <textarea name="notes" placeholder="Any details (optional)"></textarea>
+          <button type="submit" class="btn primary">Send message</button>
+          <div id="formMsg" class="form-msg"></div>
+        </form>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div>© <span id="year"></span> RAWBIT — Built for creators.</div>
+      <div class="socials">IG • YT • LinkedIn</div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+      </html>
