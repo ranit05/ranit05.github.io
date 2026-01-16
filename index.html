@@ -84,8 +84,8 @@
       </section>
 
       <section id="contact" class="contact">
-        <h3 class="section-title">Let’s collab</h3>
-        <p class="muted">Short on budget? We do starter packages. Want custom? Let’s talk.</p>
+        <h3 class="section-title">Let's collab</h3>
+        <p class="muted">Short on budget? We do starter packages. Want custom? Let's talk.</p>
 
         <form id="contactForm" class="form">
           <input name="name" type="text" placeholder="Your name" required />
@@ -115,38 +115,5 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
   </script>
-  <script>
-  document.getElementById("contactForm").addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    // Get input values
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const what = document.getElementById("what").value;
-    const notes = document.getElementById("notes").value;
-
-    // ⚙️ Replace this with YOUR WhatsApp number (with country code, no +)
-    const phoneNumber = "919874584803";
-
-    // Format the message
-    const message = `Hey! My name is ${name}.
-Email: ${email}
-Subject: ${what}
-Message: ${notes}`;
-
-    // Detect device
-    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-
-    // Choose correct WhatsApp link
-    const baseURL = isMobile
-      ? `https://wa.me/${phoneNumber}`
-      : `https://web.whatsapp.com/send?phone=${phoneNumber}`;
-
-    const fullURL = `${baseURL}&text=${encodeURIComponent(message)}`;
-
-    // Open WhatsApp
-    window.open(fullURL, "_blank");
-  });
-  </script>
 </body>
-      </html>
+</html>
