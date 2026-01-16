@@ -2,137 +2,191 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>RAWBIT — Business Solutions & Professional Services</title>
-  <meta name="description" content="RAWBIT provides tender and official mailing, meeting management, personal face value development, high-end personal grooming, and office and accounting outsourcing services." />
-  
-  <!-- Open Graph / Social Media -->
+  <meta name="description" content="RAWBIT provides tender and official mailing, meeting management, personal development, and accounting outsourcing services." />
+
+  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="RAWBIT — Business Solutions & Professional Services" />
-  <meta property="og:description" content="Professional business solutions including tender management, meeting coordination, personal development, grooming, and accounting outsourcing." />
+  <meta property="og:description" content="Professional business solutions including tender management, meeting management, and accounting outsourcing." />
   <meta property="og:url" content="https://rawbit.studio" />
-  
+
+  <!-- Theme -->
+  <meta name="theme-color" content="#0a0000" />
+
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔴</text></svg>" />
-  
+
   <link rel="stylesheet" href="style.css" />
-  <meta name="theme-color" content="#0a0000">
 </head>
 <body>
 
-  <!-- Intro splash -->
+  <!-- Intro Splash -->
   <div id="intro" class="screen">
     <div class="intro-inner">
-      <h1 id="logo" class="logo" data-text="RAWBIT">RAWBIT</h1>
+      <h1 class="logo" data-text="RAWBIT">RAWBIT</h1>
     </div>
   </div>
 
-  <!-- Main site -->
+  <!-- Main Site -->
   <div id="site" class="site hidden">
+
     <canvas id="particles" aria-hidden="true"></canvas>
 
+    <!-- Header -->
     <header class="topbar">
       <div class="brand">RAWBIT</div>
-      <nav class="nav" id="mainNav">
+
+      <!-- Desktop Nav -->
+      <nav class="nav desktop-nav">
         <a href="#hero">Home</a>
         <a href="#services">Services</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </nav>
-      <button id="menuToggle" class="menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+
+      <!-- Hamburger -->
+      <button
+        id="menuToggle"
+        class="menu-toggle"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+      >
         <span></span>
         <span></span>
         <span></span>
       </button>
-      <button id="cta" class="btn">Get Started</button>
+
+      <!-- CTA (desktop only via CSS) -->
+      <a href="#contact" id="cta" class="btn">Get Started</a>
     </header>
 
+    <!-- Mobile Menu -->
+    <nav
+      id="mobileMenu"
+      class="mobile-menu"
+      aria-hidden="true"
+    >
+      <a href="#hero">Home</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+
+      <a href="#contact" class="btn primary mobile-cta">Get Started</a>
+    </nav>
+
+    <!-- Main -->
     <main>
+
+      <!-- Hero -->
       <section id="hero" class="hero">
         <div class="hero-inner">
           <h2 class="hero-title">RAWBIT</h2>
-          <p class="hero-sub">PROFESSIONAL BUSINESS SOLUTIONS — Elevating your business with expert tender management, meeting coordination, personal development, and premium outsourcing services.</p>
+          <p class="hero-sub">
+            Professional business solutions — tender management, meeting handling,
+            and accounting outsourcing built for serious operators.
+          </p>
+
           <div class="hero-actions">
-            <a class="btn primary" href="#contact">Get In Touch</a>
-            <a class="btn ghost" href="#services">Our Services</a>
+            <a href="#contact" class="btn primary">Get In Touch</a>
+            <a href="#services" class="btn ghost">Our Services</a>
           </div>
         </div>
       </section>
 
+      <!-- Services -->
       <section id="services" class="services">
         <h3 class="section-title">Our Services</h3>
+
         <div class="cards">
           <div class="card">
             <div class="card-icon">📄</div>
             <h4>Tender & Official Mailing</h4>
-            <p>Professional tender preparation, submission, and comprehensive official correspondence management to ensure compliance and success.</p>
+            <p>
+              End-to-end tender handling, submissions, and official correspondence
+              with zero compliance risk.
+            </p>
           </div>
+
           <div class="card">
             <div class="card-icon">🤝</div>
             <h4>Meeting Management</h4>
-            <p>Expert coordination, scheduling, and facilitation of business meetings, ensuring productive outcomes and professional execution.</p>
+            <p>
+              Professional handling of business meetings, agendas,
+              propositions, and execution.
+            </p>
           </div>
-          <div class="card">
-            <div class="card-icon">💼</div>
-            <h4>Personal Face Value Development</h4>
-            <p>Build your professional presence with strategic personal branding, communication coaching, and executive presence training.</p>
-          </div>
-          <div class="card">
-            <div class="card-icon">✨</div>
-            <h4>High-End Personal Grooming</h4>
-            <p>Premium grooming services and style consulting to enhance your professional image and boost confidence in every interaction.</p>
-          </div>
+
           <div class="card">
             <div class="card-icon">📊</div>
-            <h4>Office & Accounting Outsourcing</h4>
-            <p>Complete back-office solutions including bookkeeping, payroll, compliance, and administrative support for seamless operations.</p>
+            <h4>Day-to-Day Accounting Outsourcing</h4>
+            <p>
+              Reliable bookkeeping, records maintenance, and operational accounting
+              so you can focus on growth.
+            </p>
           </div>
         </div>
       </section>
 
+      <!-- About -->
       <section id="about" class="about">
-        <h3 class="section-title">Why Choose RAWBIT</h3>
+        <h3 class="section-title">Why RAWBIT</h3>
+
         <div class="about-content">
           <div class="about-item">
-            <h4>🎯 Professional Excellence</h4>
-            <p>We deliver top-tier business solutions with meticulous attention to detail and unwavering commitment to quality.</p>
+            <h4>🎯 Precision</h4>
+            <p>Every task handled with accuracy, accountability, and intent.</p>
           </div>
+
           <div class="about-item">
-            <h4>⚡ Efficient Results</h4>
-            <p>Streamlined processes and expert execution ensure your business operations run smoothly and effectively.</p>
+            <h4>⚡ Speed</h4>
+            <p>Fast execution without compromising professionalism.</p>
           </div>
+
           <div class="about-item">
-            <h4>🔒 Confidential & Secure</h4>
-            <p>Your business information is handled with the highest level of security and confidentiality at all times.</p>
+            <h4>🔒 Confidentiality</h4>
+            <p>Your data, documents, and discussions stay strictly secure.</p>
           </div>
         </div>
       </section>
 
+      <!-- Contact -->
       <section id="contact" class="contact">
-        <h3 class="section-title">Let's Work Together</h3>
-        <p class="muted">Ready to elevate your business? Get in touch with us today for a consultation.</p>
+        <h3 class="section-title">Let’s Work Together</h3>
+        <p class="muted">
+          Tell us what you need. We’ll handle the rest.
+        </p>
 
         <form id="contactForm" class="form">
-          <input name="name" type="text" placeholder="Your name" required aria-label="Your name" />
-          <input name="email" type="email" placeholder="Email" required aria-label="Your email" />
-          <input name="service" type="text" placeholder="Which service are you interested in?" required aria-label="Service interest" />
-          <textarea name="notes" placeholder="Tell us more about your needs (optional)" aria-label="Additional details"></textarea>
+          <input type="text" name="name" placeholder="Your name" required />
+          <input type="email" name="email" placeholder="Email address" required />
+          <input type="text" name="service" placeholder="Service required" required />
+          <textarea name="notes" placeholder="Additional details (optional)"></textarea>
+
           <button type="submit" class="btn primary">Send Inquiry</button>
           <div id="formMsg" class="form-msg" role="status" aria-live="polite"></div>
         </form>
       </section>
+
     </main>
 
+    <!-- Footer -->
     <footer class="footer">
-      <div>© <span id="year">2026</span> RAWBIT — Professional Business Solutions</div>
+      <div>
+        © <span id="year"></span> RAWBIT — Professional Business Solutions
+      </div>
+
       <div class="socials">
-        <a href="https://instagram.com/rawbit.studio" target="_blank" rel="noopener noreferrer" aria-label="Instagram">IG</a>
-        <span aria-hidden="true">•</span>
-        <a href="https://youtube.com/@rawbitstudio" target="_blank" rel="noopener noreferrer" aria-label="YouTube">YT</a>
-        <span aria-hidden="true">•</span>
-        <a href="https://linkedin.com/company/rawbit-studio" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a>
+        <a href="https://instagram.com/rawbit.studio" target="_blank" rel="noopener">IG</a>
+        <span>•</span>
+        <a href="https://youtube.com/@rawbitstudio" target="_blank" rel="noopener">YT</a>
+        <span>•</span>
+        <a href="https://linkedin.com/company/rawbit-studio" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </footer>
+
   </div>
 
   <script src="script.js"></script>
