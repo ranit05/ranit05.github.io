@@ -66,3 +66,75 @@
     transition: none;
   }
 }
+/* =========================
+   MOBILE FIX — REQUIRED
+========================= */
+@media (max-width: 768px) {
+
+  body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+  }
+
+  main {
+    padding: 0 16px;
+  }
+
+  section {
+    margin-bottom: 64px;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+    margin-bottom: 24px;
+  }
+
+  /* WHY RAWBIT */
+  .about-content {
+    display: grid;
+    gap: 24px;
+  }
+
+  .about-item h4 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+  }
+
+  /* SERVICES */
+  .cards {
+    display: grid;
+    gap: 20px;
+  }
+
+  .card {
+    padding: 20px;
+    border-radius: 14px;
+  }
+
+  /* FORM */
+  .form {
+    display: grid;
+    gap: 14px;
+  }
+
+  .form input,
+  .form textarea {
+    width: 100%;
+    padding: 14px;
+    font-size: 1rem;
+    border-radius: 10px;
+  }
+
+  .form button {
+    width: 100%;
+    padding: 14px;
+    font-size: 1rem;
+  }
+
+  footer {
+    padding: 24px 16px;
+    text-align: center;
+  }
+}
