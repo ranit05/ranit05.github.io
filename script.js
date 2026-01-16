@@ -52,7 +52,7 @@
   }
   function draw(){
     ctx.clearRect(0,0,W,H);
-    for(let i=0;i<particles.length;i++){
+    for(let i=0;i<particles.length;i++){ 
       const p = particles[i];
       ctx.beginPath();
       const alpha = Math.max(0, Math.min(1, p.life / 220));
@@ -115,7 +115,7 @@
     }
 
     // create a burst particle at cursor
-    for(let i=0;i<2;i++){
+    for(let i=0;i<2;i++){ 
       const p = new Particle();
       p.x = e.clientX + rand(-6,6);
       p.y = e.clientY + rand(-6,6);
@@ -139,7 +139,7 @@
       // simple redirect to mailto for now
       const subject = encodeURIComponent(`[RAWBIT INQUIRY] ${what} — ${name}`);
       const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nNeed: ${what}\n\nDetails:\n${data.get('notes') || ''}`);
-      window.location.href = `mailto:ranitsharma05@gmail.com?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:rawbit.services@gmail.com?subject=${subject}&body=${body}`;
       setTimeout(()=> formMsg.textContent = 'If mail client did not open, copy the email and message manually.', 800);
     });
   }
