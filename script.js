@@ -10,7 +10,7 @@
   ======================= */
   const intro = $('#intro');
   const site = $('#site');
-  const logo = $('#logo');
+  const logo = $('.logo');
   const canvas = $('#particles');
   const yearEl = $('#year');
 
@@ -39,7 +39,6 @@
       document.body.style.overflow = isOpen ? 'hidden' : '';
     });
 
-    // Close menu on link click
     mobileMenu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         menuToggle.classList.remove('active');
@@ -52,93 +51,92 @@
   }
 
   /* =======================
-     PARTICLES (RESPECT MOTION)
-  ======================= */
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (!canvas || reduceMotion) return;
-
-  canvas.style.pointerEvents = 'none';
-
-  const ctx = canvas.getContext('2d');
-  let W = canvas.width = innerWidth;
-  let H = canvas.height = innerHeight;
-
-  const particles = [];
-  const MAX = innerWidth < 768 ? 60 : 120;
-
-  const rand = (a, b) => Math.random() * (b - a) + a;
-
-  function Particle() {
-    this.x = rand(0, W);
-    this.y = rand(0, H);
-    this.vx = rand(-0.3, 0.3);
-    this.vy = rand(-0.4, 0.4);
-    this.life = rand(80, 220);
-    this.size = rand(0.6, 2.4);
-  }
-
-  Particle.prototype.step = function () {
-    this.x += this.vx;
-    this.y += this.vy;
-    this.life--;
-    this.size *= 0.998;
-
-    if (this.x < -20) this.x = W + 20;
-    if (this.x > W + 20) this.x = -20;
-    if (this.y < -20) this.y = H + 20;
-    if (this.y > H + 20) this.y = -20;
-  };
-
-  function regen() {
-    while (particles.length < MAX) particles.push(new Particle());
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, W, H);
-
-    for (let i = particles.length - 1; i >= 0; i--) {
-      const p = particles[i];
-      ctx.beginPath();
-      ctx.fillStyle = `rgba(255,27,27,${Math.max(0, p.life / 220) * 0.5})`;
-      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-      ctx.fill();
-      p.step();
-
-      if (p.life <= 0 || p.size < 0.2) particles.splice(i, 1);
-    }
-
-    regen();
-    requestAnimationFrame(draw);
-  }
-
-  window.addEventListener('resize', () => {
-    W = canvas.width = innerWidth;
-    H = canvas.height = innerHeight;
-  });
-
-  regen();
-  draw();
-
-  /* =======================
-     INTRO SEQUENCE
+     INTRO (ALWAYS RUNS)
   ======================= */
   function startIntro() {
-    logo.style.animation = 'logoPulse 700ms ease-in-out 2';
+    if (!intro || !site) return;
 
     setTimeout(() => {
-      intro.style.opacity = 0;
       intro.style.transition = 'opacity .6s ease';
+      intro.style.opacity = 0;
 
       setTimeout(() => {
         intro.remove();
         site.classList.remove('hidden');
       }, 650);
-    }, 900);
+    }, 600);
   }
 
-  window.addEventListener('load', () => {
-    setTimeout(startIntro, 300);
-  });
+  window.addEventListener('load', startIntro);
+
+  /* =======================
+     PARTICLES (OPTIONAL)
+  ======================= */
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (canvas && !reduceMotion) {
+    canvas.style.pointerEvents = 'none';
+
+    const ctx = canvas.getContext('2d');
+    let W = canvas.width = innerWidth;
+    let H = canvas.height = innerHeight;
+
+    const particles = [];
+    const MAX = innerWidth < 768 ? 50 : 100;
+
+    const rand = (a, b) => Math.random() * (b - a) + a;
+
+    function Particle() {
+      this.x = rand(0, W);
+      this.y = rand(0, H);
+      this.vx = rand(-0.3, 0.3);
+      this.vy = rand(-0.4, 0.4);
+      this.life = rand(80, 200);
+      this.size = rand(0.6, 2.2);
+    }
+
+    Particle.prototype.step = function () {
+      this.x += this.vx;
+      this.y += this.vy;
+      this.life--;
+      this.size *= 0.995;
+
+      if (this.x < -20) this.x = W + 20;
+      if (this.x > W + 20) this.x = -20;
+      if (this.y < -20) this.y = H + 20;
+      if (this.y > H + 20) this.y = -20;
+    };
+
+    function regen() {
+      while (particles.length < MAX) particles.push(new Particle());
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(255,27,27,${Math.max(0, p.life / 200) * 0.4})`;
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+        p.step();
+
+        if (p.life <= 0 || p.size < 0.2) particles.splice(i, 1);
+      }
+
+      regen();
+      requestAnimationFrame(draw);
+    }
+
+    window.addEventListener('resize', () => {
+      W = canvas.width = innerWidth;
+      H = canvas.height = innerHeight;
+    });
+
+    regen();
+    draw();
+  }
 
   /* =======================
      CONTACT FORM
@@ -153,7 +151,7 @@
       const service = data.get('service');
       const notes = data.get('notes') || '';
 
-      formMsg.textContent = 'Opening mail client…';
+      if (formMsg) formMsg.textContent = 'Opening mail client…';
 
       const subject = encodeURIComponent(`[RAWBIT] ${service} — ${name}`);
       const body = encodeURIComponent(
@@ -162,10 +160,6 @@
 
       window.location.href =
         `mailto:rawbit.services@gmail.com?subject=${subject}&body=${body}`;
-
-      setTimeout(() => {
-        formMsg.textContent = 'If mail did not open, please send manually.';
-      }, 1000);
     });
   }
 })();
